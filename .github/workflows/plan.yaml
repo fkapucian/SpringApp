@@ -70,7 +70,7 @@ jobs:
 
       - name: Delete S3 bucket (Terraform State)
         run: |
-          bucket=terraform-state-spring-boot-app
+          bucket=terraform-state-spring-boot-app-fkapucian
           token=""
           
           while : ; do
@@ -91,7 +91,7 @@ jobs:
             token=$(jq -r '.NextToken // empty' <<<"$resp")
             [ -z "$token" ] && break
           done
-          aws s3 rb s3://terraform-state-spring-boot-app --force
+          aws s3 rb s3://terraform-state-spring-boot-app-fkapucian --force
           
   build:
     name: "Build"
